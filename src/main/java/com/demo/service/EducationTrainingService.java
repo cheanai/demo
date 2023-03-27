@@ -19,8 +19,28 @@ public class EducationTrainingService {
         return educationTrainingInfos;
     }
 
+    public EducationTrainingInfo[] selectEducationTrainingByState(String state , String department) {
+        EducationTrainingInfo[] educationTrainingInfos = educationTrainingInfo.findEducationTrainingInfoByState(state,department);
+        return educationTrainingInfos;
+    }
+
     @Transactional
     public void insert(String title, String type, String location, Date time,String department){
         educationTrainingInfo.insert(title,type,location,time,department);
+    }
+
+    public EducationTrainingInfo[] selectEducationTrainingByTitle(String title, String department) {
+        EducationTrainingInfo[] educationTrainingInfos = educationTrainingInfo.findEducationTrainingInfoByTitle(title,department);
+        return educationTrainingInfos;
+    }
+
+    public EducationTrainingInfo[] selectEducationTrainingByTitleAndState(String state, String title, String department) {
+        EducationTrainingInfo[] educationTrainingInfos = educationTrainingInfo.findEducationTrainingInfoByTitleAndState(state,title,department);
+        return educationTrainingInfos;
+    }
+
+    public EducationTrainingInfo selectEducationTrainingById(String id) {
+        EducationTrainingInfo educationTraining = educationTrainingInfo.findEducationTrainingInfoById(id);
+        return educationTraining;
     }
 }
