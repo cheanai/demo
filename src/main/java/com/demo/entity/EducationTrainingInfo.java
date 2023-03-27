@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class EducationTrainingInfo {
 
-  private long id;
+  private int id;
   private String title;
   private java.sql.Date time;
   private String location;
