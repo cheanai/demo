@@ -14,8 +14,8 @@ public class EducationTrainingService {
     @Autowired
     IEducationTrainingInfo educationTrainingInfo;
 
-    public EducationTrainingInfo[] select() {
-        EducationTrainingInfo[] educationTrainingInfos = educationTrainingInfo.findAllEducationTrainingInfo();
+    public EducationTrainingInfo[] select(String department) {
+        EducationTrainingInfo[] educationTrainingInfos = educationTrainingInfo.findAllEducationTrainingInfo(department);
         return educationTrainingInfos;
     }
 
@@ -27,6 +27,11 @@ public class EducationTrainingService {
     @Transactional
     public void insert(String title, String type, String location, Date time,String department){
         educationTrainingInfo.insert(title,type,location,time,department);
+    }
+
+    @Transactional
+    public void update(int id ,String title, String type, String location, Date time,String department){
+        educationTrainingInfo.update(id,title,type,location,time,department);
     }
 
     public EducationTrainingInfo[] selectEducationTrainingByTitle(String title, String department) {

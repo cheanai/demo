@@ -4,6 +4,7 @@ import com.demo.entity.EducationTrainingInfo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
@@ -11,8 +12,8 @@ import java.sql.Date;
 @Repository
 public interface IEducationTrainingInfo {
 
-    @Select("SELECT * FROM education_training_info")
-    EducationTrainingInfo[] findAllEducationTrainingInfo();
+    @Select("SELECT * FROM education_training_info where department = #{department}")
+    EducationTrainingInfo[] findAllEducationTrainingInfo(String department);
 
     @Select("SELECT * FROM education_training_info where state = #{state} and department = #{department}")
     EducationTrainingInfo[] findEducationTrainingInfoByState(@Param("state") String state,@Param("department") String department);
@@ -28,4 +29,8 @@ public interface IEducationTrainingInfo {
 
     @Select("SELECT * FROM education_training_info where id = #{id}")
     EducationTrainingInfo findEducationTrainingInfoById(String id);
+
+    @Update("UPDATE education_training_info SET title = #{title}, type = #{type}, location = #{location},time = #{time},department = #{department},state = '未审核' WHERE id = #{id}")
+    void update(@Param("id") int id, @Param("title") String title, @Param("type") String type, @Param("location") String location, @Param("time") Date time, @Param("department") String department);
+
 }

@@ -18,8 +18,8 @@ public class EducationTrainingController {
 
     @RequestMapping("/selectEducationTraining")
     @ResponseBody
-    public EducationTrainingInfo[] login (){
-        EducationTrainingInfo[] data = serviceClass.select();
+    public EducationTrainingInfo[] login (String department){
+        EducationTrainingInfo[] data = serviceClass.select(department);
         return data;
     }
     @RequestMapping("/selectEducationTrainingByState")
@@ -60,5 +60,12 @@ public class EducationTrainingController {
     @ResponseBody
     public void insertEducationTraining(@RequestBody EducationTrainingInfo educationTraining){
         serviceClass.insert(educationTraining.getTitle(),educationTraining.getType(),educationTraining.getLocation(),educationTraining.getTime(),educationTraining.getDepartment());
+    }
+
+    @PostMapping("/updateEducationTraining")
+    @ResponseBody
+    public void updateEducationTraining(@RequestBody EducationTrainingInfo educationTraining){
+        System.out.println(educationTraining);
+        serviceClass.update(educationTraining.getId(),educationTraining.getTitle(),educationTraining.getType(),educationTraining.getLocation(),educationTraining.getTime(),educationTraining.getDepartment());
     }
 }
