@@ -20,6 +20,7 @@ public class EducationTrainingController {
     @ResponseBody
     public EducationTrainingInfo[] login (String department){
         EducationTrainingInfo[] data = serviceClass.select(department);
+
         return data;
     }
     @RequestMapping("/selectEducationTrainingByState")
@@ -59,6 +60,7 @@ public class EducationTrainingController {
     @PostMapping("/insertEducationTraining")
     @ResponseBody
     public void insertEducationTraining(@RequestBody EducationTrainingInfo educationTraining){
+        System.out.println(educationTraining);
         serviceClass.insert(educationTraining.getTitle(),educationTraining.getType(),educationTraining.getLocation(),educationTraining.getTime(),educationTraining.getDepartment());
     }
 
