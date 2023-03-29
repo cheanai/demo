@@ -17,7 +17,6 @@ public class TeacherTrainingController {
     @RequestMapping("/selectTeacherTraining")
     @ResponseBody
     public TeacherTraining[] selectTeacherTraining (String department){
-        System.out.println(department);
         TeacherTraining[] data = serviceClass.select(department);
         System.out.println(Arrays.toString(data));
         return data;
@@ -42,17 +41,17 @@ public class TeacherTrainingController {
 
     @RequestMapping("/selectTeacherTrainingByName")
     @ResponseBody
-    public TeacherTraining[] selectTeacherTrainingByName (String TeacherName , String department){
-        System.out.println(TeacherName+"-"+department);
-        TeacherTraining[] data = serviceClass.selectTeacherTrainingByName(TeacherName,department);
+    public TeacherTraining[] selectTeacherTrainingByName (String teacherName , String department){
+        System.out.println(teacherName+"-"+department);
+        TeacherTraining[] data = serviceClass.selectTeacherTrainingByName(teacherName,department);
         System.out.println(data);
         return data;
     }
     @RequestMapping("/selectTeacherTrainingByNameAndState")
     @ResponseBody
-    public TeacherTraining[] selectTeacherTrainingByNameAndState (String state, String TeacherName , String department){
-        System.out.println(state+"-"+TeacherName+"-"+department);
-        TeacherTraining[] data = serviceClass.selectTeacherTrainingByNameAndState(state,TeacherName,department);
+    public TeacherTraining[] selectTeacherTrainingByNameAndState (String state, String teacherName , String department){
+        System.out.println(state+"-"+teacherName+"-"+department);
+        TeacherTraining[] data = serviceClass.selectTeacherTrainingByNameAndState(state,teacherName,department);
         System.out.println(data);
         return data;
     }
