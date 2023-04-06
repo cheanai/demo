@@ -32,4 +32,10 @@ public interface TalentTeacherDao {
     @Select("SELECT * FROM talent_teacher WHERE name like CONCAT('%', #{name}, '%') " +
             "AND department = #{department}")
     TalentTeacher[] selectByTeacherNameAndDepartment(String name, String department);
+
+    @Select("SELECT * FROM talent_teacher")
+    TalentTeacher[] selectAll();
+
+    @Update("UPDATE talent_teacher SET state = #{state} WHERE id = #{id}")
+    void updateTalentTeacherById(int id, String state);
 }

@@ -20,6 +20,19 @@ public class DoctorInfoController {
         return data;
     }
 
+    @RequestMapping("/selectAllDoctorInfo")
+    @ResponseBody
+    public DoctorInfo[] selectAllDoctorInfo (){
+        DoctorInfo[] data = serviceClass.selectAll();
+        return data;
+    }
+
+    @RequestMapping("/updateDoctorInfoById")
+    @ResponseBody
+    public void updateDoctorInfoById (int id,String state){
+        serviceClass.updateDoctorInfoById(id,state);
+    }
+
     @RequestMapping("/selectDoctorInfoByState")
     @ResponseBody
     public DoctorInfo[] selectDoctorInfoByState (String state , String department){

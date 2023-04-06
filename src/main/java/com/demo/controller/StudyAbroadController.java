@@ -22,6 +22,20 @@ public class StudyAbroadController {
         return data;
     }
 
+    @RequestMapping("/selectAllStudyAbroad")
+    @ResponseBody
+    public StudyAbroad[] selectAllStudyAbroad (){
+        StudyAbroad[] data = serviceClass.selectAll();
+
+        return data;
+    }
+
+    @RequestMapping("/updateStudyAbroadById")
+    @ResponseBody
+    public void updateStudyAbroadById (int id,String state){
+        serviceClass.updateStudyAbroadById(id,state);
+    }
+
     @RequestMapping("/selectStudyAbroadByState")
     @ResponseBody
     public StudyAbroad[] selectStudyAbroadByState(String state, String department){

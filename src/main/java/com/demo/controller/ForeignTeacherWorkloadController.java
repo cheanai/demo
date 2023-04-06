@@ -22,6 +22,20 @@ public class ForeignTeacherWorkloadController {
         return data;
     }
 
+    @RequestMapping("/selectAllForeignTeacherWorkload")
+    @ResponseBody
+    public ForeignTeacherWorkload[] selectAllForeignTeacherWorkload (){
+        ForeignTeacherWorkload[] data = serviceClass.selectAll();
+
+        return data;
+    }
+
+    @RequestMapping("/updateForeignTeacherWorkloadById")
+    @ResponseBody
+    public void updateForeignTeacherWorkloadById (int id,String state){
+        serviceClass.updateForeignTeacherWorkloadById(id,state);
+    }
+
     @RequestMapping("/selectForeignTeacherWorkload")
     @ResponseBody
     public ForeignTeacherWorkload[] selectForeignTeacherWorkload(String department){

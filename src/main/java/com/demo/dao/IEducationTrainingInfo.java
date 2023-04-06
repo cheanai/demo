@@ -33,4 +33,9 @@ public interface IEducationTrainingInfo {
     @Update("UPDATE education_training_info SET title = #{title}, type = #{type}, location = #{location},time = #{time},department = #{department},state = '未审核' WHERE id = #{id}")
     void update(@Param("id") int id, @Param("title") String title, @Param("type") String type, @Param("location") String location, @Param("time") Date time, @Param("department") String department);
 
+    @Select("SELECT * FROM education_training_info")
+    EducationTrainingInfo[] selectAll();
+
+    @Update("UPDATE education_training_info SET state = #{state} WHERE id = #{id}")
+    void updateEducationTrainingInfoById(int id, String state);
 }

@@ -20,6 +20,20 @@ public class TalentTeacherController {
         return data;
     }
 
+    @RequestMapping("/selectAllTalentTeacher")
+    @ResponseBody
+    public TalentTeacher[] selectAllTalentTeacher (){
+        TalentTeacher[] data = serviceClass.selectAll();
+
+        return data;
+    }
+
+    @RequestMapping("/updateTalentTeacherById")
+    @ResponseBody
+    public void updateTalentTeacherById (int id,String state){
+        serviceClass.updateTalentTeacherById(id,state);
+    }
+
     @RequestMapping("/selectTalentTeacherByState")
     @ResponseBody
     public TalentTeacher[] selectTalentTeacherByState (String state , String department){

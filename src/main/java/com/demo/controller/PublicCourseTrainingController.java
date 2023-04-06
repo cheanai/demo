@@ -20,6 +20,20 @@ public class PublicCourseTrainingController {
         return data;
     }
 
+    @RequestMapping("/selectAllPublicCourseTraining")
+    @ResponseBody
+    public PublicCourseTraining[] selectAllPublicCourseTraining (){
+        PublicCourseTraining[] data = serviceClass.selectAll();
+
+        return data;
+    }
+
+    @RequestMapping("/updatePublicCourseTrainingById")
+    @ResponseBody
+    public void updatePublicCourseTrainingById (int id,String state){
+        serviceClass.updatePublicCourseTrainingById(id,state);
+    }
+
     @RequestMapping("/selectPublicCourseTrainingByState")
     @ResponseBody
     public PublicCourseTraining[] selectPublicCourseTrainingByState (String state , String department){

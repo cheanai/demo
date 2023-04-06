@@ -57,4 +57,16 @@ public class EducationTrainingService {
         EducationTrainingInfo educationTraining = educationTrainingInfo.findEducationTrainingInfoById(id);
         return educationTraining;
     }
+
+    @Cacheable(value = "mycache-EducationTrainingInfo")
+    public EducationTrainingInfo[] selectAll() {
+        return educationTrainingInfo.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-EducationTrainingInfo",allEntries = true)
+    public void updateEducationTrainingById(int id, String state) {
+        educationTrainingInfo.updateEducationTrainingInfoById(id,state);
+    }
+
 }

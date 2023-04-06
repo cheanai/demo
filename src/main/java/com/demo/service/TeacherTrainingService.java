@@ -53,4 +53,15 @@ public class TeacherTrainingService {
     public TeacherTraining[] selectTeacherTrainingByNameAndState(String state, String TeacherName, String department) {
         return dao.selectTeacherTrainingByNameAndState(state, TeacherName, department);
     }
+
+    @Cacheable(value = "mycache-TeacherTraining")
+    public TeacherTraining[] selectAll() {
+        return dao.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-TeacherTraining",allEntries = true)
+    public void updateTeacherTrainingById(int id, String state) {
+        dao.updateTeacherTrainingById(id,state);
+    }
 }

@@ -34,4 +34,10 @@ public interface TeacherTrainingDao {
     @Select("SELECT * FROM teacher_training WHERE state = #{state} AND teacher_name like CONCAT('%', #{teacherName}, '%') " +
             "AND department = #{department}")
     TeacherTraining[] selectTeacherTrainingByNameAndState(String state, String teacherName, String department);
+
+    @Select("SELECT * FROM teacher_training")
+    TeacherTraining[] selectAll();
+
+    @Update("UPDATE teacher_training SET state = #{state} WHERE id = #{id}")
+    void updateTeacherTrainingById(int id, String state);
 }

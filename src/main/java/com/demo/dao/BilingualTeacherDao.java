@@ -33,4 +33,10 @@ public interface BilingualTeacherDao {
     @Select("SELECT * FROM bilingual_teacher WHERE name like CONCAT('%', #{name}, '%') " +
             "AND department = #{department}")
     BilingualTeacher[] selectByNameAndDepartment(String name, String department);
+
+    @Select("SELECT * FROM bilingual_teacher")
+    BilingualTeacher[] selectAll();
+
+    @Update("UPDATE bilingual_teacher SET state = #{state} WHERE id = #{id}")
+    void updateBilingualTeacherById(int id, String state);
 }

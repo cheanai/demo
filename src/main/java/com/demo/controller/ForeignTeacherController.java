@@ -20,6 +20,20 @@ public class ForeignTeacherController {
         return data;
     }
 
+    @RequestMapping("/selectAllForeignTeacher")
+    @ResponseBody
+    public ForeignTeacher[] selectAllForeignTeacher (){
+        ForeignTeacher[] data = serviceClass.selectAll();
+
+        return data;
+    }
+
+    @RequestMapping("/updateForeignTeacherById")
+    @ResponseBody
+    public void updateForeignTeacherById (int id,String state){
+        serviceClass.updateForeignTeacherById(id,state);
+    }
+
     @RequestMapping("/selectForeignTeacherByState")
     @ResponseBody
     public ForeignTeacher[] selectForeignTeacherByState(String state, String department) {

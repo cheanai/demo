@@ -27,5 +27,11 @@ public interface ForeignTeacherDao {
 
     @Select("SELECT * FROM foreign_teacher WHERE name like CONCAT('%', #{name}, '%') AND state = #{state}")
     ForeignTeacher[] selectForeignTeacherByNameAndState(@Param("name") String name, @Param("state") String state);
+
+    @Select("SELECT * FROM foreign_teacher")
+    ForeignTeacher[] selectAll();
+
+    @Update("UPDATE foreign_teacher SET state = #{state} WHERE id = #{id}")
+    void updateForeignTeacherById(int id, String state);
 }
 

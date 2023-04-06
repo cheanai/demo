@@ -34,4 +34,10 @@ public interface StudyAbroadDao {
     @Select("SELECT * FROM study_abroad WHERE teacher_name like CONCAT('%', #{teacherName}, '%') " +
             "AND state = #{state} AND department = #{department}")
     StudyAbroad[] selectStudyAbroadByNameAndState(String teacherName, String state, String department);
+
+    @Select("SELECT * FROM study_abroad")
+    StudyAbroad[] selectAll();
+
+    @Update("UPDATE study_abroad SET state = #{state} WHERE id = #{id}")
+    void updateStudyAbroadById(int id, String state);
 }

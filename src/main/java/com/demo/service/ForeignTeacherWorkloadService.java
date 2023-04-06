@@ -49,4 +49,15 @@ public class ForeignTeacherWorkloadService {
     public ForeignTeacherWorkload[] selectByStateAndDepartment(String state, String department) {
         return dao.selectByStateAndDepartment(state, department);
     }
+
+    @Cacheable(value = "mycache-ForeignTeacherWorkload")
+    public ForeignTeacherWorkload[] selectAll() {
+        return dao.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-ForeignTeacherWorkload",allEntries = true)
+    public void updateForeignTeacherWorkloadById(int id, String state) {
+        dao.updateForeignTeacherWorkloadById(id,state);
+    }
 }

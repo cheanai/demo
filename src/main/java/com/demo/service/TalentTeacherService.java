@@ -50,4 +50,15 @@ public class TalentTeacherService {
     public TalentTeacher[] selectByTeacherNameAndDepartment(String name, String department) {
         return dao.selectByTeacherNameAndDepartment(name, department);
     }
+
+    @Cacheable(value = "mycache-TalentTeacher")
+    public TalentTeacher[] selectAll() {
+        return dao.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-TalentTeacher",allEntries = true)
+    public void updateTalentTeacherById(int id, String state) {
+        dao.updateTalentTeacherById(id,state);
+    }
 }

@@ -30,4 +30,10 @@ public interface AssociateProfessorDao {
 
     @Select("SELECT * FROM associate_professor WHERE name like CONCAT('%', #{name}, '%') AND department = #{department}")
     AssociateProfessor[] selectAssociateProfessorByName(String name, String department);
+
+    @Select("SELECT * FROM associate_professor")
+    AssociateProfessor[] selectAll();
+
+    @Update("UPDATE associate_professor SET state = #{state} WHERE id = #{id}")
+    void updateAssociateProfessorById(int id, String state);
 }

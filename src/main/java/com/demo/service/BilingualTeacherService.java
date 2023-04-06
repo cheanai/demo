@@ -50,4 +50,15 @@ public class BilingualTeacherService {
     public BilingualTeacher[] selectByNameAndDepartment(String name, String department) {
         return dao.selectByNameAndDepartment(name, department);
     }
+
+    @Cacheable(value = "mycache-BilingualTeacher")
+    public BilingualTeacher[] selectAll() {
+        return dao.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-BilingualTeacher",allEntries = true)
+    public void updateBilingualTeacherById(int id, String state) {
+        dao.updateBilingualTeacherById(id,state);
+    }
 }

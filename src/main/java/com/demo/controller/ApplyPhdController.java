@@ -20,6 +20,19 @@ public class ApplyPhdController {
         return data;
     }
 
+    @RequestMapping("/selectAllApplyPhd")
+    @ResponseBody
+    public ApplyPhd[] selectAllApplyPhd() {
+        ApplyPhd[] data = serviceClass.selectAll();
+        return data;
+    }
+
+    @RequestMapping("/updateApplyPhdById")
+    @ResponseBody
+    public void updateApplyPhdById(int id,String state) {
+        serviceClass.updateApplyPhdById(id,state);
+    }
+
     @RequestMapping("/selectApplyPhdByState")
     @ResponseBody
     public ApplyPhd[] selectApplyPhdBystate(String state, String department) {

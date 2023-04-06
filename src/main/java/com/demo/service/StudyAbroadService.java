@@ -52,4 +52,15 @@ public class StudyAbroadService {
     public StudyAbroad[] selectStudyAbroadByNameAndState(String teacherName, String state, String department) {
         return dao.selectStudyAbroadByNameAndState(teacherName,state, department);
     }
+
+    @Cacheable(value = "mycache-StudyAbroad")
+    public StudyAbroad[] selectAll() {
+        return dao.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-StudyAbroad",allEntries = true)
+    public void updateStudyAbroadById(int id, String state) {
+        dao.updateStudyAbroadById(id,state);
+    }
 }

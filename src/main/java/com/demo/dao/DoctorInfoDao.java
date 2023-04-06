@@ -28,4 +28,10 @@ public interface DoctorInfoDao {
 
     @Select("SELECT * FROM doctor_info where name like CONCAT('%', #{name}, '%') and department = #{department}")
     DoctorInfo[] selectDoctorInfoByName(String name, String department);
+
+    @Select("SELECT * FROM doctor_info")
+    DoctorInfo[] selectAll();
+
+    @Update("UPDATE doctor_info SET state = #{state} WHERE id = #{id}")
+    void updateDoctorInfoById(int id, String state);
 }

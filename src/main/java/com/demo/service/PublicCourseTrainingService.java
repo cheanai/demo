@@ -52,4 +52,15 @@ public class PublicCourseTrainingService {
     public PublicCourseTraining[] selectByTeacherNameAndDepartment(String teacherName, String department) {
         return dao.selectByTeacherNameAndDepartment(teacherName, department);
     }
+
+    @Cacheable(value = "mycache-PublicCourseTraining")
+    public PublicCourseTraining[] selectAll() {
+        return dao.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-PublicCourseTraining",allEntries = true)
+    public void updatePublicCourseTrainingById(int id, String state) {
+        dao.updatePublicCourseTrainingById(id,state);
+    }
 }

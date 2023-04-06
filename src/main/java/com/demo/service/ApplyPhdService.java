@@ -52,4 +52,15 @@ public class ApplyPhdService {
     public void update(int id, String name, String sex, String major, String university, String department, Date date) {
         dao.update(id, name, sex, major, university, department, date);
     }
+
+    @Cacheable(value = "mycache-ApplyPhd")
+    public ApplyPhd[] selectAll() {
+        return dao.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-ApplyPhd",allEntries = true)
+    public void updateApplyPhdById(int id, String state) {
+        dao.updateApplyPhdById(id,state);
+    }
 }

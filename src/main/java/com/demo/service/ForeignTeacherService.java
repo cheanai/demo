@@ -50,4 +50,15 @@ public class ForeignTeacherService {
     public ForeignTeacher[] selectForeignTeacherByNameAndState(String name, String state) {
         return dao.selectForeignTeacherByNameAndState(name, state);
     }
+
+    @Cacheable(value = "mycache-ForeignTeacher")
+    public ForeignTeacher[] selectAll() {
+        return dao.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-ForeignTeacher",allEntries = true)
+    public void updateForeignTeacherById(int id, String state) {
+        dao.updateForeignTeacherById(id,state);
+    }
 }

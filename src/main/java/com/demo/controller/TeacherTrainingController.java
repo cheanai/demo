@@ -22,6 +22,20 @@ public class TeacherTrainingController {
         return data;
     }
 
+    @RequestMapping("/selectAllTeacherTraining")
+    @ResponseBody
+    public TeacherTraining[] selectAllTeacherTraining (){
+        TeacherTraining[] data = serviceClass.selectAll();
+
+        return data;
+    }
+
+    @RequestMapping("/updateTeacherTrainingById")
+    @ResponseBody
+    public void updateTeacherTrainingById (int id,String state){
+        serviceClass.updateTeacherTrainingById(id,state);
+    }
+
     @RequestMapping("/selectTeacherTrainingByState")
     @ResponseBody
     public TeacherTraining[] selectTeacherTrainingByState (String state , String department){

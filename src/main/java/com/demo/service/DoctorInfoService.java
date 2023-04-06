@@ -54,4 +54,15 @@ public class DoctorInfoService {
         DoctorInfo[] doctorInfo = dao.selectDoctorInfoByName(name,department);
         return doctorInfo;
     }
+
+    @Cacheable(value = "mycache-DoctorInfo")
+    public DoctorInfo[] selectAll() {
+        return dao.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-DoctorInfo",allEntries = true)
+    public void updateDoctorInfoById(int id, String state) {
+        dao.updateDoctorInfoById(id,state);
+    }
 }

@@ -24,6 +24,20 @@ public class ProfessorController {
         return data;
     }
 
+    @RequestMapping("/selectAllProfessor")
+    @ResponseBody
+    public Professor[] selectProfessor(){
+        Professor[] data = serviceClass.selectAll();
+        System.out.println(Arrays.toString(data));
+        return data;
+    }
+
+    @RequestMapping("/updateProfessorById")
+    @ResponseBody
+    public void updateProfessorById(int id,String state){
+        serviceClass.updateProfessorById(id,state);
+    }
+
     @RequestMapping("/selectProfessorByState")
     @ResponseBody
     public Professor[] selectProfessorByState (String state , String department){

@@ -23,6 +23,21 @@ public class EducationTrainingController {
 
         return data;
     }
+
+    @RequestMapping("/selectAllEducationTraining")
+    @ResponseBody
+    public EducationTrainingInfo[] selectAllEducationTraining (){
+        EducationTrainingInfo[] data = serviceClass.selectAll();
+
+        return data;
+    }
+
+    @RequestMapping("/updateEducationTrainingById")
+    @ResponseBody
+    public void updateEducationTrainingById (int id,String state){
+        serviceClass.updateEducationTrainingById(id,state);
+    }
+
     @RequestMapping("/selectEducationTrainingByState")
     @ResponseBody
     public EducationTrainingInfo[] selectEducationTrainingByState (String state , String department){

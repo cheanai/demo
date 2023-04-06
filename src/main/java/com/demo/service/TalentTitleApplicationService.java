@@ -52,4 +52,15 @@ public class TalentTitleApplicationService {
     public TalentTitleApplication[] selectTalentTitleApplicationByName(String name, String department) {
         return dao.selectTalentTitleApplicationByName(name, department);
     }
+
+    @Cacheable(value = "mycache-TalentTitleApplication")
+    public TalentTitleApplication[] selectAll() {
+        return dao.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-TalentTitleApplication",allEntries = true)
+    public void updateTalentTitleApplicationById(int id, String state) {
+        dao.updateTalentTitleApplicationById(id,state);
+    }
 }

@@ -50,4 +50,15 @@ public class AssociateProfessorService {
     public AssociateProfessor[] selectAssociateProfessorByName(String name, String department) {
         return dao.selectAssociateProfessorByName(name, department);
     }
+
+    @Cacheable(value = "mycache-AssociateProfessor")
+    public AssociateProfessor[] selectAll() {
+        return dao.selectAll();
+    }
+
+    @Transactional
+    @CacheEvict(value = "mycache-AssociateProfessor",allEntries = true)
+    public void updateAssociateProfessorById(int id, String state) {
+        dao.updateAssociateProfessorById(id,state);
+    }
 }

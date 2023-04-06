@@ -26,4 +26,10 @@ public interface ForeignTeacherWorkloadDao {
 
     @Select("SELECT * FROM foreign_teacher_workload WHERE state = #{state} AND department = #{department}")
     ForeignTeacherWorkload[] selectByStateAndDepartment(@Param("state") String state, @Param("department") String department);
+
+    @Select("SELECT * FROM foreign_teacher_workload")
+    ForeignTeacherWorkload[] selectAll();
+
+    @Update("UPDATE foreign_teacher_workload SET state = #{state} WHERE id = #{id}")
+    void updateForeignTeacherWorkloadById(int id, String state);
 }

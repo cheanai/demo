@@ -33,4 +33,9 @@ public interface ApplyPhdDao {
             "department = #{department}, date = #{date}, state = '未审核' WHERE id = #{id}")
     void update(int id, String name, String sex, String major, String university, String department, Date date);
 
+    @Select("SELECT * FROM apply_phd")
+    ApplyPhd[] selectAll();
+
+    @Update("UPDATE apply_phd SET state = #{state} WHERE id = #{id}")
+    void updateApplyPhdById(int id, String state);
 }

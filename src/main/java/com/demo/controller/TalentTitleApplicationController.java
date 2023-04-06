@@ -21,6 +21,20 @@ public class TalentTitleApplicationController {
         return data;
     }
 
+    @RequestMapping("/selectAllTalentTitleApplication")
+    @ResponseBody
+    public TalentTitleApplication[] selectAllTalentTitleApplication (){
+        TalentTitleApplication[] data = serviceClass.selectAll();
+
+        return data;
+    }
+
+    @RequestMapping("/updateTalentTitleApplicationById")
+    @ResponseBody
+    public void updateTalentTitleApplicationById (int id,String state){
+        serviceClass.updateTalentTitleApplicationById(id,state);
+    }
+
     @RequestMapping("/selectTalentTitleApplicationByState")
     @ResponseBody
     public TalentTitleApplication[] selectTalentTitleApplicationByState (String state , String department){

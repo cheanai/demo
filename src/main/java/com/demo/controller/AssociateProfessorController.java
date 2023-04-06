@@ -24,6 +24,20 @@ public class AssociateProfessorController {
         return data;
     }
 
+    @RequestMapping("/selectAllAssociateProfessor")
+    @ResponseBody
+    public AssociateProfessor[] selectAllAssociateProfessor(){
+        AssociateProfessor[] data = serviceClass.selectAll();
+        System.out.println(Arrays.toString(data));
+        return data;
+    }
+
+    @RequestMapping("/updateAssociateProfessorById")
+    @ResponseBody
+    public void updateAssociateProfessorById(int id,String state) {
+        serviceClass.updateAssociateProfessorById(id,state);
+    }
+
     @RequestMapping("/selectAssociateProfessorByState")
     @ResponseBody
     public AssociateProfessor[] selectAssociateProfessorByState (String state , String department){

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+
 @Controller
 @CrossOrigin
 public class BilingualTeacherController {
@@ -18,6 +20,21 @@ public class BilingualTeacherController {
     public BilingualTeacher[] selectBilingualTeacher(String department){
         BilingualTeacher[] data = serviceClass.select(department);
         return data;
+    }
+
+    @RequestMapping("/selectALlBilingualTeacher")
+    @ResponseBody
+    public BilingualTeacher[] selectAllBilingualTeacher(){
+        System.out.println("---------");
+        BilingualTeacher[] data = serviceClass.selectAll();
+        System.out.println(Arrays.toString(data));
+        return data;
+    }
+
+    @RequestMapping("/updateBilingualTeacherById")
+    @ResponseBody
+    public void updateBilingualTeacherById(int id,String state){
+        serviceClass.updateBilingualTeacherById(id,state);
     }
 
     @RequestMapping("/selectBilingualTeacherByState")
