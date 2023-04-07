@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Arrays;
+
 @Controller
 @CrossOrigin
 public class TaskTableController {
@@ -23,5 +25,35 @@ public class TaskTableController {
         TaskTable[] data = serviceClass.selectAll();
 
         return data;
+    }
+
+    @RequestMapping("/selectTaskTableByCollegeAndState")
+    @ResponseBody
+    public TaskTable[] selectTaskTableByCollegeAndState(String college, String state) {
+        TaskTable[] data = serviceClass.selectTaskTableByCollegeAndState(college, state);
+        System.out.println(Arrays.toString(data));
+        return data;
+    }
+
+    @RequestMapping("/selectTaskTableByCollege")
+    @ResponseBody
+    public TaskTable[] selectTaskTableByCollege(String college) {
+        TaskTable[] data = serviceClass.selectTaskTableByCollege(college);
+        System.out.println(Arrays.toString(data));
+        return data;
+    }
+
+    @RequestMapping("/selectTaskTableByState")
+    @ResponseBody
+    public TaskTable[] selectTaskTableByState(String state) {
+        TaskTable[] data = serviceClass.selectTaskTableByState(state);
+        System.out.println(Arrays.toString(data));
+        return data;
+    }
+
+    @RequestMapping("/updateTaskTableById")
+    @ResponseBody
+    public void updateApplyPhdById(int id,String state) {
+        serviceClass.updateTaskTableById(id,state);
     }
 }

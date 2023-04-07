@@ -24,4 +24,25 @@ public class TaskTableService {
     public TaskTable[] selectAll() {
         return dao.selectAll();
     }
+
+    @Cacheable(value = "mycache-TaskTable")
+    public TaskTable[] selectTaskTableByCollegeAndState(String college, String state) {
+        return dao.selectTaskTableByCollegeAndState(college,state);
+    }
+
+    @Cacheable(value = "mycache-TaskTable")
+    public TaskTable[] selectTaskTableByCollege(String college) {
+        return dao.selectTaskTableByCollege(college);
+    }
+
+    @Cacheable(value = "mycache-TaskTable")
+    public TaskTable[] selectTaskTableByState(String state) {
+        return dao.selectTaskTableByState(state);
+    }
+
+    @CacheEvict(value = "mycache-TaskTable", allEntries = true)
+    @Transactional
+    public void updateTaskTableById(int id, String state) {
+        dao.updateTaskTableById(id,state);
+    }
 }
