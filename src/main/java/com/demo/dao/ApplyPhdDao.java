@@ -38,4 +38,7 @@ public interface ApplyPhdDao {
 
     @Update("UPDATE apply_phd SET state = #{state} WHERE id = #{id}")
     void updateApplyPhdById(int id, String state);
+
+    @Select("SELECT department FROM apply_phd WHERE id = #{id}")
+    String selectDepartment(int id);
 }

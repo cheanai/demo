@@ -32,4 +32,7 @@ public interface TaskTableDao {
 
     @Update("UPDATE task_table SET state = #{state} WHERE id = #{id}")
     void updateTaskTableById(int id, String state);
+
+    @Select("SELECT taskVolume FROM task_table WHERE state = '已通过' and tertiaryIndicators = #{tertiaryIndicators} and college = #{department}")
+    int selectTaskTableByTarget(String tertiaryIndicators,String department);
 }
