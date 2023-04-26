@@ -5,6 +5,16 @@ spring:
     url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=utf-8
     username: root
     password: asdf245689731
+  mail:
+    host: smtp.126.com
+    username: lc1308749008@126.com
+    password: RSMOKADPVJVEQRUQ
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 logging:
   level:
     com.sgit.smartsite.iot.bind.mapper: debug

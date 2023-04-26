@@ -16,4 +16,23 @@ public class userService {
         Users user = IuserDao.findUserByUserName(userName,pwd);
         return user;
     }
+
+    public boolean updatePassword(String email, String newPassword) {
+        try {
+            IuserDao.updateByemail(email,newPassword);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean selectEmail(String emailAddress) {
+        Users user = IuserDao.selectEmail(emailAddress);
+        if (user!=null){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
